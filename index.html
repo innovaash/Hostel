@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="BedBox Hostels production hostel management system">
+<meta name="theme-color" content="#111936">
+<title>BedBox Hostels — Management</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="login" class="login">
+  <div class="loginbox">
+    <div class="brand loginbrand">BedBox Hostels<small>Hostel Management System</small></div>
+    <h1>Staff Sign in</h1>
+    <p class="muted">Use your BedBox staff account.</p>
+    <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="username" placeholder="staff@example.com"></div>
+    <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Password"></div>
+    <button id="loginBtn" class="btn primary wide">Sign in</button>
+    <button id="setupBtn" class="btn wide">⚙ Setup Supabase</button>
+    <div id="loginMsg" class="notice">Only authenticated staff accounts can access the system.</div>
+  </div>
+  </div>
+  <div id="setup" class="login hidden">
+    <div class="loginbox">
+      <div class="brand loginbrand">BedBox Setup<small>Connect this copy to Supabase</small></div>
+      <h1>One-time setup</h1>
+      <p class="muted">Paste the two values from Supabase Dashboard → Project Settings → API.</p>
+      <div class="field"><label for="setupUrl">Project URL</label><input id="setupUrl" type="url" placeholder="https://xxxxx.supabase.co"></div>
+      <div class="field"><label for="setupKey">Publishable / Anon key</label><input id="setupKey" type="password" autocomplete="off" placeholder="sb_publishable_… or anon key"></div>
+      <button id="setupSave" class="btn primary wide">Save &amp; Connect</button>
+      <button id="setupCancel" class="btn wide">Cancel</button>
+      <div class="notice">Only the browser-safe publishable/anon key belongs here. Never paste a service-role/secret key.</div>
+    </div>
+  </div>
+
+<div id="app" class="app hidden">
+  <aside class="sidebar">
+    <div class="brand">BedBox Hostels<small>Management System</small></div>
+    <div id="userBox" class="userbox"></div>
+    <nav class="nav" aria-label="Main navigation">
+      <button class="active" data-page="dashboard">Dashboard</button>
+      <button data-page="students">Students</button>
+      <button data-page="rooms">Rooms &amp; Beds</button>
+      <button data-page="payments">Payments</button>
+      <button data-page="expenses">Expenses</button>
+      <button data-page="reports">Reports</button>
+      <button data-page="staff" data-admin-only>Staff</button>
+      <button id="logoutBtn">Logout</button>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <div><h1 id="title">Dashboard</h1><div class="muted" id="subtitle">Hostel operations at a glance.</div></div>
+      <div class="topactions"><button id="refreshBtn" class="btn">Refresh</button></div>
+    </header>
+    <div id="content"></div>
+  </main>
+</div>
+
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="modalbox"><div id="modalBody"></div></div>
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
